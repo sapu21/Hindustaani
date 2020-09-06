@@ -17,12 +17,12 @@
 
 <p>
   <strong>Father name:</strong>
-  <%= @user.father.name %>
+  <%= @user.father.name if @user.father %>
 </p>
 
 <p>
   <strong>Mother name:</strong>
-  <%= @user.mother.name %>
+  <%= @user.mother.name if @user.mother %>
 </p>
 
 <p>
