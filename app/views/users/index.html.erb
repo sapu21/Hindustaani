@@ -1,9 +1,9 @@
 <p id="notice"><%= notice %></p>
 
 
-<h1>Users</h1>
+<h1>Hindustani</h1>
 
-<table>
+<table class="table table-striped">
   <thead>
     <tr>
       <th>Name</th>
@@ -25,8 +25,14 @@
         <td><%= user.adharnumber %></td>
         <td><%= user.birthdate %></td>
         <td><%= link_to user.father.name, user_path(user.father) if user.father  %></td>
-        <td><%= link_to user.mother.name, user_path(user.mother) if user.mother %></td>
-        <td><%= user.children %></td>
+        <td><%= link_to user.mother.name, user_path(user.mother) if user.mother  %></td>
+        <td>
+          <% if user.gender == "male" %>
+            <%= link_to user.child_of_father.name, user_path(user.child_of_father) if user.child_of_father %>
+          <% else %>
+            <%= link_to user.child_of_mother.name, user_path(user.child_of_mother) if user.child_of_mother %>
+          <% end %>
+        </td>
         <td><%= link_to 'Show', user %></td>
         <td><%= link_to 'Edit', edit_user_path(user) %></td>
         <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>

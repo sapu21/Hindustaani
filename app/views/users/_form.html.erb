@@ -2,7 +2,9 @@
   <%= f.input :name %>
   <%= f.input :adharnumber %>
   <%= f.input :birthdate %>
-  <%= f.input :father_id, collection: User.all %>
-  <%= f.input :mother_id, collection: User.all %>
-  <%= f.button :submit %>
+  <%= f.input :gender, :as => :select, :collection => User.genders.keys, include_blank: false, include_hidden: false %>
+  <%= f.input :father_id, collection: User.where(gender: "male") %>
+  <%= f.input :mother_id, collection: User.where(gender: "female")%>
+  <%= f.button :submit, class: "btn-primary" %>
+  <%= f.button :button, "Cancel", type: "reset", class: "btn-outline-secondary" %>
 <% end %>

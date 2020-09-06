@@ -16,18 +16,23 @@
 </p>
 
 <p>
-  <strong>Father:</strong>
-  <%= @user.father %>
+  <strong>Father name:</strong>
+  <%= @user.father.name %>
 </p>
 
 <p>
-  <strong>Mother:</strong>
-  <%= @user.mother %>
+  <strong>Mother name:</strong>
+  <%= @user.mother.name %>
 </p>
 
 <p>
-  <strong>Children:</strong>
-  <%= @user.children %>
+  <strong>Children name:</strong>
+
+  <% if @user.gender == "male" %>
+    <%= @user.child_of_father.name if @user.child_of_father %>
+  <% else %>
+    <%= @user.child_of_mother.name if @user.child_of_mother %>
+  <% end %>
 </p>
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
