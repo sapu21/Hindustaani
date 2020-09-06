@@ -1,0 +1,8 @@
+<%= simple_form_for @user do |f| %>
+  <%= f.input :name %>
+  <%= f.input :adharnumber %>
+  <%= f.input :birthdate %>
+  <%= f.input :father_id, collection: User.all %>
+  <%= f.input :mother_id, collection: User.all %>
+  <%= f.button :submit %>
+<% end %>
