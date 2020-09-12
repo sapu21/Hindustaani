@@ -10,6 +10,7 @@ require 'faker'
 20.times do 
     User.create(
         name: Faker::Name.name,
+        adharnumber: Faker::Number.number(4).to_i,
         gender: rand(0..1)
     )
 end

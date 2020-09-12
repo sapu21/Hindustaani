@@ -3,8 +3,11 @@
   <%= f.input :adharnumber %>
   <%= f.input :birthdate %>
   <%= f.input :gender, :as => :select, :collection => User.genders.keys, include_blank: false, include_hidden: false %>
-  <%= f.input :father_id, collection: User.where(gender: "male") %>
-  <%= f.input :mother_id, collection: User.where(gender: "female")%>
+  <%= f.input :father_id, collection: User.where(gender: "male").map {|user| [user.adharnumber, user.id]}%>
+  <%= f.input :mother_id, collection: User.where(gender: "female").map {|user| [user.adharnumber, user.id]}%>
+  <%= f.input :has_step_parents, :as => :select, :collection => [['No', false],['Yes', true]] %>
+  <%= f.input :step_father_id, collection: User.where(gender: "male").map {|user| [user.adharnumber, user.id]}%>
+  <%= f.input :step_mother_id, collection: User.where(gender: "female").map {|user| [user.adharnumber, user.id]}%>
   <%= f.button :submit, class: "btn-primary" %>
   <%= f.button :button, "Cancel", type: "reset", class: "btn-outline-secondary" %>
 <% end %>

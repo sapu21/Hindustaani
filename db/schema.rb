@@ -10,23 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200906104428) do
+ActiveRecord::Schema.define(version: 20200912155013) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "users", force: :cascade do |t|
     t.string   "name"
-    t.integer  "adharnumber"
+    t.bigint   "adharnumber"
     t.string   "birthdate"
     t.string   "father"
     t.string   "mother"
     t.string   "children"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.integer  "father_id"
-    t.integer  "mother_id"
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+    t.bigint   "father_id"
+    t.bigint   "mother_id"
     t.integer  "gender"
+    t.bigint   "step_father_id"
+    t.bigint   "step_mother_id"
+    t.boolean  "has_step_parents", default: false
   end
 
 end
